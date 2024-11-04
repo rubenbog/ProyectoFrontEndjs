@@ -1,0 +1,347 @@
+       
+         
+        body {
+            background-image: url("img/fondo2.png");
+            font-family:'Roboto' Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-size: cover; /* La imagen cubre todo el contenedor */
+            background-position: center; /* Centra la imagen */
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            position: relative;
+        } 
+        
+        .fa-shopping-cart {
+            position: fixed; /* Fija el ícono en la pantalla */
+            top: 20px; /* Ubicación desde el borde superior */
+            right: 20px; /* Ubicación desde el borde derecho */
+            font-size: 36px; /* Tamaño del ícono */
+            z-index: 1000; /* Asegura que esté por encima de otros elementos */
+            color: #333; /* Color del ícono, ajusta según el diseño */
+            background-color: rgba(255, 255, 255, 0.7); /* Fondo semi-transparente para mejor visibilidad */
+            padding: 10px;
+            border-radius: 50%; /* Forma redondeada */
+            
+        }
+        
+        
+        header {
+            background-color: #f8b400;
+            color: rgb(31, 24, 24);
+            text-align: center;
+            padding: 20px 0;
+           
+        }
+        
+        h2 {
+                background-color: bisque;
+        }
+        nav {
+            background-color: #333;
+            padding: 10px;
+        }
+        .nav-list {
+            list-style:none;
+            text-decoration:none;
+            /*display: inline;*/
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        main {
+            padding: 20px;
+            text-align: center;
+        }
+
+        section {
+            margin: 20px 0;
+        }
+
+        .preferidas {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* 4 columnas fijas */
+            grid-template-rows: repeat(2, 1fr);    /* 2 filas fijas */
+            gap: 20px;                             /* Espacio entre los elementos */
+            padding: 10px;
+        }
+        
+        .recetas iframe {
+            width: 100%;
+            height: 200px; /* Ajusta la altura de los videos */
+            border: none;
+            border-radius: 8px; /* Bordes redondeados para un mejor diseño */
+        }
+        
+        .recetas {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 5px;
+        }
+        
+        .boton-container {
+            text-align: center; /* Centra el botón dentro del div */
+            margin: 20px;
+        }
+        
+        .boton-volver {
+            background-color: #4CAF50; /* Color de fondo */
+            color: white; /* Color del texto */
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        .boton-volver:hover {
+            background-color: #45a049; /* Color cuando se pasa el ratón sobre el botón */
+        }
+        
+    
+        #sobre-nosotros {
+            display: flex;
+            flex-direction: row; /* Coloca los elementos en una fila */
+            justify-content: space-around; /* Espacio entre los elementos */
+            align-items: flex-start; /* Alinea los elementos al inicio del eje vertical */
+            flex-wrap: nowrap; /* Evita que los elementos se envuelvan a la siguiente fila */
+            gap: 20px; /* Espacio entre los elementos */
+        }
+        
+        .nosotros {
+            flex: 1;
+            text-align: center; /* Centra el contenido dentro de cada div */
+            font-family: 'Roboto';
+            font-size: 16px;
+            color: #333;
+        }
+        
+        iframe {
+            width: 600px;
+            height : 450px;
+            max-width: 100%; /* Asegura que los iframes se ajusten al contenedor */
+        }
+
+        .productos {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            
+        }
+        
+        #contactos {
+            text-align: center;
+            margin: 0 auto;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+            gap: 10px;
+        }
+        
+        .social-icons li {
+            margin: 0 10px; /*display: inline;*/
+        }
+        
+        .social-icons img {
+            width: 32px; /* Tamaño de los iconos */
+            height: 32px;
+            transition: transform 0.3s;
+        }
+        
+        .social-icons img:hover {
+            transform: scale(1.2); /* Efecto hover para agrandar el icono */
+        }
+
+        /* Estilo para ocultar inicialmente el cuadro de contacto */
+        #contact-info {
+             display: none;
+         }
+
+         #contact-info:target {
+              display: block;
+              margin-top: 20px;
+              background-color: #f0f0f0;
+              padding: 15px;
+              border-radius: 5px;
+              box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+          }
+        
+        /* Estilos para el popup sin JavaScript */
+.overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    z-index: 1000;
+}
+
+.overlay:target {
+    visibility: visible;
+    opacity: 1;
+}
+
+.popup {
+    margin: 70px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 5px;
+    width: 300px;
+    position: relative;
+    transition: all 0.5s ease-in-out;
+}
+
+.popup h2 {
+    margin-top: 0;
+    color: #333;
+}
+
+.popup .close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    transition: all 200ms;
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #333;
+}
+
+.popup .close:hover {
+    color: #ff0000;
+}
+
+.popup .btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.popup .btn:hover {
+    background-color: #45a049;
+}
+
+/* Enlace de recetas visible desde el principio */
+#recetasLink {
+    display: inline;
+    margin-top: 20px;
+}
+
+       .producto {
+            margin: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            width: 200px;
+            background-color: rgb(175, 217, 230);
+            background-size: cover; /* Asegura que la imagen cubra toda la caja */
+            background-position: center; /* Centra la imagen */
+            overflow: hidden; /* Oculta el contenido que sobresalga de la caja */
+            transition: transform 0.3s ease; /* Suaviza la transición al hacer zoom */
+        }
+
+        .producto img {
+            width: 50%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 5px;
+            transition: transform 0.3s ease; /* Suaviza el efecto de zoom en la imagen */
+        }
+         /* Efecto de zoom al pasar el mouse sobre la caja del producto */
+          .producto:hover img {
+          transform: scale(1.2); /* Aplica zoom a la imagen */
+          }
+
+         /* Efecto de zoom en toda la caja del producto */
+         .producto:hover {
+           transform: scale(1.05); /* Aplica un ligero zoom a la caja entera */
+         } 
+
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            background-color: #333;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .productos {
+                grid-template-columns: repeat(2, 1fr); /* 2 columnas en tablets */
+            }
+        
+            header {
+                padding: 15px;
+            }
+        
+            header img {
+                width: 50%; /* Cambia el tamaño de la imagen del header */
+            }
+        
+            nav ul li {
+                display: block;
+                margin: 5px 0;
+            }
+        }
+        
+        /* Para pantallas pequeñas (móviles) */
+        @media (max-width: 480px) {
+            .productos {
+                grid-template-columns: 1fr; /* 1 columna en móviles */
+            }
+        
+            header {
+                padding: 10px;
+            }
+        
+            header img {
+                width: 80%; /* Imagen más pequeña en móviles */
+            }
+        
+            nav ul {
+                text-align: left;
+                padding-left: 10px;
+            }
+        
+            nav ul li {
+                display: block;
+                margin: 10px 0;
+            }
+        
+            .producto {
+                padding: 10px; /* Reduce el padding en productos */
+            }
+        
+            footer {
+                font-size: 0.8rem;
+            }
+        }
