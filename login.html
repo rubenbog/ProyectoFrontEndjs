@@ -1,13 +1,8 @@
-<<<<<<< HEAD
-=======
-<!-- templates/login.html -->
->>>>>>> 9ceb77e35bd4bcf6a0558d468091a023c2ff4ea1
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<<<<<<< HEAD
     <title>Iniciar Sesión</title>
     <link rel="stylesheet" href="styles3.css">
 </head>
@@ -25,37 +20,36 @@
     </header>
 
     <section class="login">
-        <h2>Iniciar Sesión</h2>
-        <form action="#" method="POST">
-            <label for="email-login">Email:</label>
-            <input type="email" id="email-login" name="email-login" required>
+        <h2>Accede a tu Cuenta</h2>
+        <form id="loginForm">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
 
-            <label for="password-login">Contraseña:</label>
-            <input type="password" id="password-login" name="password-login" required>
+            <label for="password">Contraseña:</label>
+            <input type="password" id="password" name="password" required>
 
-            <button type="submit">Iniciar Sesión</button>
+            <button type="button" onclick="loginUser()">Iniciar Sesión</button>
         </form>
     </section>
 
     <footer>
-        <p>&copy; 2024 Pastelería Dulce Delicia. Todos los derechos reservados.</p>
+        <p>&copy; 2024 Pastelería Delicias. Todos los derechos reservados.</p>
     </footer>
-=======
-    <title>Login</title>
-</head>
-<body>
-    <h2>Iniciar Sesión</h2>
-    <form method="post" action="{% url 'login' %}">
-        <label for="username">Usuario:</label>
-        <input type="text" id="username" name="username" required><br><br>
 
-        <label for="password">Contraseña:</label>
-        <input type="password" id="password" name="password" required><br><br>
+    <script>
+        function loginUser() {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
 
-        <button type="submit">Iniciar sesión</button>
-    </form>
+            const storedUser = JSON.parse(localStorage.getItem('user'));
 
-    <p>¿No tienes una cuenta? <a href="{% url 'registrate' %}">Regístrate aquí</a></p>
->>>>>>> 9ceb77e35bd4bcf6a0558d468091a023c2ff4ea1
+            if (storedUser && storedUser.email === email && storedUser.password === password) {
+                alert('Inicio de sesión exitoso');
+                window.location.href = 'index.html';
+            } else {
+                alert('Email o contraseña incorrectos');
+            }
+        }
+    </script>
 </body>
 </html>

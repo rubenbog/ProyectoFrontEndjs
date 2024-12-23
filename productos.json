@@ -1,0 +1,57 @@
+{
+    "productos": [
+        {
+            "name": "Pastel San Lorenso",
+            "price": 16000,
+            "image": "img/cumpleaño_SanLorenso.jpeg"
+        },
+        {
+            "name": "Pastel Hojaldre",
+            "price": 15500,
+            "image": "img/pastel_hojaldre.jpeg"
+        },
+        {
+            "name": "tarta frutal",
+            "price": 24675, 
+            "image":"img/tartaFrutal.jpg" 
+                 
+        },
+        {       
+            "name":"Torta 50 Años",    
+            "price":23898,
+            "image":"img/torta50años.jpeg"
+        },       
+        {       
+             "name": "Torta bastimos",
+             "price": 25898,
+             "image": "img/torta_baustimo.jpeg"
+              
+        },       
+         {   "name": "Torta granja" ,
+             "price":27800,
+             "image": "img/torta_granja.jpeg"
+        },
+        {       
+             "name": "Torta guitarra",
+             "price":26.898,
+             "image":"img/torta_guitarra.jpeg"
+        },      
+        {   "name": "Torta mariposa",
+            "price":28.898,
+             "image": "img/torta_mariposa.jpeg"
+        },       
+        {    "name":"Torta pelota",
+             "price":27898,
+             "image":"img/torta_pelota.jpeg" 
+        },
+        {   "name":"Torta queen" ,
+            "price":26898,
+            "image":"img/torta_queen.jpeg"
+        },
+        {
+            "name":"Torta Tigre",
+            "price": 26508,
+            "image":"img/torta_tigre.jpeg" 
+        }        
+    ]
+}

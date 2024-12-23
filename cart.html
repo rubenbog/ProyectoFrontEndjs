@@ -3,35 +3,236 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carrito de Compras</title>
-    <link rel="stylesheet" href="styles3.css">
+    <title>Carrito de Compras - Pastelería Delicias</title>
+    <link rel="stylesheet" href="carrito.css">
 </head>
 <body>
     <header>
         <h1>Carrito de Compras</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Productos</a></li>
-                <li><a href="register.html">Registrarse</a></li>
-                <li><a href="login.html">Iniciar Sesión</a></li>
-                <li><a href="cart.html">Carrito</a></li>
-            </ul>
-        </nav>
     </header>
 
-    <section class="carrito">
-        <h2>Tu Carrito</h2>
-        <ul>
-            <li>Torta de Chocolate - $1500</li>
-            <li>Alfajores - $500</li>
-            <li>Cupcakes - $1000</li>
-        </ul>
-        <h3>Total: $3000</h3>
-        <button>Pagar</button>
-    </section>
+    <main>
+        <section id="carrito">
+            <h2>Productos en tu carrito</h2>
+            <div id="productos-carrito"></div>
+            <p id="total"></p>
+
+            <!-- Opción para elegir el método de pago -->
+            <h3>Elige tu método de pago</h3>
+            <div id="metodo-pago">
+                <label>
+                    <input type="radio" name="pago" value="tarjeta" id="pago-tarjeta">
+                    Tarjeta de Crédito
+                </label>
+                <label>
+                    <input type="radio" name="pago" value="transferencia" id="pago-transferencia">
+                    Transferencia Bancaria
+                </label>
+            </div>
+
+            <!-- Formulario para simular pago con tarjeta -->
+            <form id="form-pago" class="tarjeta-credito hidden">
+                <h3>Pago con Tarjeta de Crédito</h3>
+                <label for="numero-tarjeta">Número de Tarjeta:</label>
+                <input type="text" id="numero-tarjeta" maxlength="16" required placeholder="XXXX-XXXX-XXXX-XXXX">
+                <label for="fecha-expiracion">Fecha de Expiración:</label>
+                <input type="text" id="fecha-expiracion" maxlength="5" required placeholder="MM/AA">
+                <label for="cvv">CVV:</label>
+                <input type="text" id="cvv" maxlength="3" required placeholder="CVV">
+            </form>
+
+            <!-- Mostrar detalles de transferencia bancaria si se elige esa opción -->
+            <div id="info-transferencia" class="hidden">
+                <p>Para completar la compra mediante transferencia bancaria, realiza la transferencia a la siguiente cuenta:</p>
+                <p><strong>Titular de la cuenta:</strong> Pastelería Delicias SRL</p>
+                <p><strong>CBU:</strong> 1234567890123456789012</p>
+                <p><strong>Alias:</strong> DELICIAS.PASTELERIA.CUENTA</p>
+                <p><strong>Banco:</strong> Banco Nación</p>
+                <p>Una vez realizada la transferencia, por favor envíanos el comprobante a nuestro email: <a href="mailto:pagos@pasteleriadelicias.com">pagos@pasteleriadelicias.com</a> o por WhatsApp al +54 9 11 1234-5678.</p>
+                <p>El procesamiento de tu pago puede demorar hasta 48 horas hábiles. Te notificaremos cuando el pago sea acreditado.</p>
+            </div>
+           <!-- Opción para elegir la forma de envío -->
+<h3>Elige tu forma de envío</h3>
+<div id="forma-envio">
+    <label>
+        <input type="radio" name="envio" value="domicilio" id="envio-domicilio">
+        Envío a Domicilio (Costo: $500)
+    </label>
+    <label>
+        <input type="radio" name="envio" value="retiro" id="envio-retiro">
+        Retiro en Tienda (Sin costo)
+    </label>
+</div>
+
+<!-- Mostrar detalles de envío a domicilio -->
+<div id="info-envio-domicilio" class="hidden">
+    <h4>Datos para el envío a domicilio:</h4>
+    <label for="direccion">Dirección de envío:</label>
+    <input type="text" id="direccion" placeholder="Ingresa tu dirección" required>
+    <label for="ciudad">Ciudad:</label>
+    <input type="text" id="ciudad" placeholder="Ingresa tu ciudad" required>
+    <label for="codigo-postal">Código Postal:</label>
+    <input type="text" id="codigo-postal" placeholder="Ingresa tu código postal" required>
+</div>
+
+<!-- Mostrar detalles para retiro en tienda -->
+<div id="info-envio-retiro" class="hidden">
+    <h4>Información de retiro en tienda:</h4>
+    <p>Puedes retirar tu pedido en nuestra tienda:</p>
+    <p><strong>Dirección:</strong> Calle Falsa 123, Buenos Aires</p>
+    <p><strong>Horario:</strong> Lunes a Viernes, de 9:00 a 18:00</p>
+    <p>Te notificaremos cuando tu pedido esté listo para retirar.</p>
+</div>
+
+            <!-- Botón para realizar la compra -->
+            <button id="comprar">Comprar</button>
+            <div id="mensaje-compra" class="hidden">¡Compra exitosa! Gracias por tu compra.</div>
+            
+            <!-- Botón para volver a la página principal -->
+            <br>
+            <button id="volver-index">Volver a la página principal</button>
+        </section>
+    </main>
 
     <footer>
-        <p>&copy; 2024 Pastelería Dulce Delicia. Todos los derechos reservados.</p>
+        <p>&copy; 2024 Pastelería Delicias. Todos los derechos reservados.</p>
     </footer>
+
+    <script>
+        // Cargar los productos desde el carrito almacenado en localStorage
+        function cargarCarrito() {
+            const productosCarrito = document.getElementById('productos-carrito');
+            const totalElement = document.getElementById('total');
+            let carrito = JSON.parse(localStorage.getItem('cart')) || [];
+            productosCarrito.innerHTML = '';
+
+            if (carrito.length === 0) {
+                productosCarrito.innerHTML = '<p>Tu carrito está vacío.</p>';
+                totalElement.textContent = '';
+                return;
+            }
+
+            let total = 0;
+            carrito.forEach(item => {
+                const productoDiv = document.createElement('div');
+                productoDiv.classList.add('producto-carrito');
+                productoDiv.innerHTML = `
+                    <p>${item.name} (Cantidad: ${item.quantity}) - $${item.price}</p>
+                `;
+                productosCarrito.appendChild(productoDiv);
+
+                total += item.price * item.quantity;
+            });
+
+            totalElement.textContent = `Total a pagar: $${total}`;
+        }
+
+        // Mostrar u ocultar el formulario de pago según la opción seleccionada
+        function seleccionarMetodoPago() {
+            const formPago = document.getElementById('form-pago');
+            const infoTransferencia = document.getElementById('info-transferencia');
+            const pagoTarjeta = document.getElementById('pago-tarjeta');
+            const pagoTransferencia = document.getElementById('pago-transferencia');
+
+            // Ocultar ambas opciones al inicio
+            formPago.classList.add('hidden');
+            infoTransferencia.classList.add('hidden');
+
+            // Mostrar la opción seleccionada
+            if (pagoTarjeta.checked) {
+                formPago.classList.remove('hidden');
+                infoTransferencia.classList.add('hidden');
+            } else if (pagoTransferencia.checked) {
+                infoTransferencia.classList.remove('hidden');
+                formPago.classList.add('hidden');
+            }
+        }
+
+        // Función para simular la compra
+        function realizarCompra() {
+            const pagoTarjeta = document.getElementById('pago-tarjeta').checked;
+            const pagoTransferencia = document.getElementById('pago-transferencia').checked;
+
+            if (!pagoTarjeta && !pagoTransferencia) {
+                alert('Por favor, selecciona un método de pago.');
+                return;
+            }
+
+            if (pagoTarjeta) {
+                const numeroTarjeta = document.getElementById('numero-tarjeta').value;
+                const fechaExpiracion = document.getElementById('fecha-expiracion').value;
+                const cvv = document.getElementById('cvv').value;
+
+                // Validaciones simples de la tarjeta
+                if (!numeroTarjeta || numeroTarjeta.length !== 16 || isNaN(numeroTarjeta)) {
+                    alert('Por favor, ingresa un número de tarjeta válido.');
+                    return;
+                }
+                if (!fechaExpiracion || !/^(0[1-9]|1[0-2])\/\d{2}$/.test(fechaExpiracion)) {
+                    alert('Por favor, ingresa una fecha de expiración válida (MM/AA).');
+                    return;
+                }
+                if (!cvv || cvv.length !== 3 || isNaN(cvv)) {
+                    alert('Por favor, ingresa un CVV válido.');
+                    return;
+                }
+            }
+
+            // Mostrar mensaje de compra exitosa
+            document.getElementById('mensaje-compra').classList.remove('hidden');
+
+            // Vaciar el carrito
+            localStorage.removeItem('cart');
+            cargarCarrito();
+
+            // Limpiar el formulario de tarjeta
+            document.getElementById('form-pago').reset();
+        }
+
+        // Manejar el clic en el botón de comprar
+        document.getElementById('comprar').addEventListener('click', realizarCompra);
+
+        // Manejar el cambio en el método de pago
+        document.getElementById('pago-tarjeta').addEventListener('change', seleccionarMetodoPago);
+        document.getElementById('pago-transferencia').addEventListener('change', seleccionarMetodoPago);
+
+        // Cargar el carrito al cargar la página
+        cargarCarrito();
+
+        // Botón para volver a la página principal
+        document.getElementById('volver-index').addEventListener('click', () => {
+            window.location.href = 'index.html';
+        });
+
+      // FORMA DE ENVIOS
+      // Mostrar u ocultar las opciones según la forma de envío seleccionada
+    function seleccionarFormaEnvio() {
+        const infoEnvioDomicilio = document.getElementById('info-envio-domicilio');
+        const infoEnvioRetiro = document.getElementById('info-envio-retiro');
+        const envioDomicilio = document.getElementById('envio-domicilio');
+        const envioRetiro = document.getElementById('envio-retiro');
+
+        // Ocultar ambas opciones al inicio
+        infoEnvioDomicilio.classList.add('hidden');
+        infoEnvioRetiro.classList.add('hidden');
+
+        // Mostrar la opción seleccionada
+        if (envioDomicilio.checked) {
+            infoEnvioDomicilio.classList.remove('hidden');
+            infoEnvioRetiro.classList.add('hidden');
+        } else if (envioRetiro.checked) {
+            infoEnvioRetiro.classList.remove('hidden');
+            infoEnvioDomicilio.classList.add('hidden');
+        }
+    }
+
+    // Manejar el cambio en la forma de envío
+    document.getElementById('envio-domicilio').addEventListener('change', seleccionarFormaEnvio);
+    document.getElementById('envio-retiro').addEventListener('change', seleccionarFormaEnvio);
+
+    // Asegúrate de que la forma de envío seleccionada al cargar la página se refleje correctamente
+    seleccionarFormaEnvio();
+
+    </script>
 </body>
 </html>

@@ -1,0 +1,58 @@
+ // Para agregar al carrito
+            document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', function () {
+                const name = this.getAttribute('data-name');
+                const price = this.getAttribute('data-price');
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+                const itemIndex = cart.findIndex(item => item.name === name);
+
+                if (itemIndex !== -1) {
+                    cart[itemIndex].quantity += 1;
+                } else {
+                    cart.push({ name, price, quantity: 1 });
+                }
+
+                localStorage.setItem('cart', JSON.stringify(cart));
+                alert(`${name} añadido al carrito`);
+            });
+        });
+        //***********
+// Comprobar si el usuario está logeado
+            document.getElementById('video-btn').addEventListener('click', function() {
+            const loggedIn = localStorage.getItem('loggedIn');
+
+            if (loggedIn === 'true') {
+                // Si el usuario está logeado, redirigir a popup.html
+                window.location.href = 'recetas.html';
+            } else {
+                // Si no está logeado, mostrar el popup
+                document.getElementById('popup1').style.display = 'flex';
+            }
+        });
+
+        // Cerrar el popup cuando se haga clic en la "X"
+        document.querySelector('.close').addEventListener('click', function() {
+        document.getElementById('popup1').style.display = 'none';
+        });
+        //************
+        // Verificar si el usuario está logueado
+            window.onload = function() {
+            const user = localStorage.getItem('user');
+
+            if (user) {
+                // Si el usuario está logueado
+                document.getElementById('logoutSection').style.display = 'block';
+                document.getElementById('registerLink').style.display = 'none'; // Oculta el botón de "Registrarse"
+            } else {
+                // Si el usuario no está logueado
+               // document.getElementById('recetasLink').style.display = 'none'; // Oculta el link de "Videos"
+                document.getElementById('videoSection').style.display = 'none'; // Oculta la sección de videos
+            }
+        };
+
+        // Función para cerrar sesión
+        document.getElementById('logoutButton').addEventListener('click', function() {
+            localStorage.removeItem('user');
+            alert('Sesión cerrada');
+            location.reload(); // Recargar la página para actualizar el estado
+        });

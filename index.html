@@ -10,98 +10,120 @@
 </head>
 <body>
     <header>
-      
         <h1>Pastelería Delicias</h1>
         <img src="img/negocio.jpg" alt="Negocio" width="10%">
         <p>Los mejores postres para cada ocasión</p>
-        <a href="cart.html" target="_blank "><i class="fa fa-shopping-cart" ></i></header></a>
-      
-        
+        <a href="cart.html" target="_blank"><i class="fa fa-shopping-cart"></i></a>
+       
     </header>
-
+    
     <nav>
         <ul class="nav-list">
             <li><a href="#productos">Productos</a></li>
-            <li><a href="#popup1">Registrate</a></li>
-            <li id="recetasLink"><a href="recetas.html">Videos</a></li>
+            <li id="registerLink"><a href="register.html">Registrate</a></li>
+             <!-- Botón para ver videos -->
+            <li><a href="#popup1">Click para ver   <i class="fas fa-arrow-right"></i></a></li>
+            <li><button id="video-btn" class="btn">Videos</button></li>
+            <!-- <li id="recetasLink"><a href="recetas.html">Videos</a></li> -->
             <li><a href="#sobre-nosotros">Sobre Nosotros</a></li>
             <li><a href="contacto.html">Contacto</a></li>
             <li><a href="login.html" target="_blank">Login</a></li>
-            <!-- <li><a href="register.html" target="_blank">Registrate</a></li> -->
-            <li><a href="cart.html" target="_blank ">Carrito</a></li>
+            <li><a href="cart.html" target="_blank">Carrito</a></li>
+            <li id="logoutSection" style="display:none;">
+                <button id="logoutButton">Cerrar Sesión</button>
+            </li>
         </ul>
+		 
 
-        <div id="popup1" class="overlay">
-          <div class="popup">
-          <a class="close" href="#">&times;</a>
-          <h2>¡Regístrate!</h2>
-          <p>Si te registras, podrás ver nuestras recetas y acceder a contenido exclusivo.</p>
-          <a href="register.html" class="btn">Ir a la página de registro</a>
+          <!-- Popup de registro si no está logeado -->
+          <div id="popup1" class="overlay">
+              <div class="popup">
+                  <a class="close" href="#">&times;</a>
+                  <h2>¡Regístrate o Inicia Sesión!</h2>
+                  <p>Necesitas estar registrado para ver los videos de recetas.</p>
+                  <a href="register.html" class="btn">Registrarse</a>
+                  <a href="login.html" class="btn">Iniciar Sesión</a>
+              </div>
           </div>
-        </div>    
     </nav>
 
     <main>
         <section id="productos">
             <h2>Nuestros Productos 🎂 </h2>
-            <div class="productos" > 
+            <div class="productos">
                 <div class="producto">
-                    <img src="img/cumpleaño_SanLorenso.jpeg" alt="cumple san lorenso" >
+                    <img src="img/cumpleaño_SanLorenso.jpeg" alt="cumple san lorenso">
                     <h3>Pastel San Lorenso</h3>
-                    <p>$15000</p>
+                    <p class="price">Precio: $15000</p>
+                    <button class="add-to-cart" data-name="Pastel San Lorenso" data-price="15000">Añadir al Carrito</button>
                 </div>
                 <div class="producto">
-                    <img src="img/pastel_hojaldre.jpeg" alt="Pastel Hojaldre"  >
+                    <img src="img/pastel_hojaldre.jpeg" alt="Pastel Hojaldre">
                     <h3>Pastel Hojaldre</h3>
-                    <p>Con Dulce de leche y crema. $14.659</p>
+                    <p class="price">Precio: $14659</p>
+                    <button class="add-to-cart" data-name="Pastel Hojaldre" data-price="14659">Añadir al Carrito</button>
                 </div>
                 <div class="producto">
                     <a href="https://cookpad.com/ar/recetas/5514330-cupcakes" target="_blank"><img src="img/tartaFrutal.jpg" alt="tarta frutal"  ></a>
                     <h3>Tarta Frutal</h3>
-                    <p>$24.675</p>
+                    <p class="price">Precio: $24.675</p>
+                    <button class="add-to-cart" data-name="Tarta frutal" data-price="24675">Añadir al Carrito</button>
                 </div>
                 <div class="producto">
                     <a href="https://www.testerecetas.es/recetas/galletas/63fde377934b8ad3af9d783c" target="_blank"><img src="img/torta50años.jpeg" alt="Torta 50" ></a>
                     <h3>Torta 50 años</h3>
-                    <p>$23.898</p>
+                    <p class="price">Precio: $23.898</p>
+                    <button class="add-to-cart" data-name="Torta 50 Años" data-price="23898">Añadir al Carrito</button>
                 </div>
                 <div class="producto">
                     <img src="img/torta_baustimo.jpeg" alt="Torta baustimo" ></a>
                     <h3>Torta bastimos</h3>
-                    <p>$25.898</p>
+                    <p class="price">Precio: $25.898</p>
+                    <button class="add-to-cart" data-name="Torta bastimos" data-price="25898">Añadir al Carrito</button>
                 </div>
                 <div class="producto">
                     <img src="img/torta_granja.jpeg" alt="Torta granja" ></a>
                     <h3>Torta granja</h3>
-                    <p>$27.800</p>
-                </div>
+                    <p class="price">Precio: $27.800</p>
+                    <button class="add-to-cart" data-name="Torta granja" data-price="27800">Añadir al Carrito</button>
+                </div> 
                 <div class="producto">
                     <img src="img/torta_guitarra.jpeg" alt="Torta guitarra" ></a>
                     <h3>Torta guitarra</h3>
-                    <p>$26.898</p>
+                    <p class="price">Precio: $26.898</p>
+                    <button class="add-to-cart" data-name="Torta guitarra" data-price="26898">Añadir al Carrito</button>
                 </div>
                 <div class="producto">
                     <img src="img/torta_mariposa.jpeg" alt="Torta mariposa" ></a>
                     <h3>Torta mariposa</h3>
-                    <p>$28.898</p>
+                    <p class="price">Precio: $28.898</p>
+                    <button class="add-to-cart" data-name="Torta mariposa" data-price="28898">Añadir al Carrito</button>
                 </div>
                 <div class="producto">
                     <img src="img/torta_pelota.jpeg" alt="Torta pelota" ></a>
                     <h3>Torta pelota</h3>
-                    <p>$27.898</p>
+                    <p class="price">Precio: $27.898</p>
+                    <button class="add-to-cart" data-name="Torta pelota" data-price="27898">Añadir al Carrito</button>
                 </div>
                 <div class="producto">
                     <img src="img/torta_queen.jpeg" alt="Torta queen" ></a>
                     <h3>Torta Queen</h3>
-                    <p>$26.898</p>
+                    <p class="price">Precio: $26.898</p>
+                    <button class="add-to-cart" data-name="Torta Queen" data-price="26898">Añadir al Carrito</button>
                 </div>
                 <div class="producto">
                     <img src="img/torta_tigre.jpeg" alt="Torta Tigre" ></a>
                     <h3>Torta Tigre</h3>
-                    <p>$26.508</p>
+                    <p class="price">Precio: $26.508</p>
+                    <button class="add-to-cart" data-name="Torta Tigre" data-price="26508">Añadir al Carrito</button>
                 </div>
             </div>
         </section>
+
+        <section>
+            <button id="actualizar-precios">Actualizar Precios</button>
+        </section>
+
         <h2>Sobre Nosotros</h2>
         <section id="sobre-nosotros">
            
@@ -119,28 +141,86 @@
         <section id="contactos">
             <h2>Contactos</h2>
             <ul class="social-icons">
-               <li><a href="https://instagram.com" target="_blank"><img src="img/instagramm.png" alt="Instagram"></a></li>
-               <li><a href="https://twitter.com" target="_blank"><img src="img/twiter.png" alt="Twitter"></a></li>
-               <li><a href="https://facebook.com" target="_blank"><img src="img/facebook.png" alt="Facebook"></a></li>
+                <li><a href="https://instagram.com" target="_blank"><img src="img/instagramm.png" alt="Instagram"></a></li>
+                <li><a href="https://twitter.com" target="_blank"><img src="img/twiter.png" alt="Twitter"></a></li>
+                <li><a href="https://facebook.com" target="_blank"><img src="img/facebook.png" alt="Facebook"></a></li>
             </ul>
             <li><a href="#contact-info">Click aqui</a></li>
-            <!-- Información adicional que se mostrará al hacer clic en el enlace -->
             <div id="contact-info">
-               <p><strong>Email:</strong> info@pasteleria-delicias.com</p>
-               <p><strong>Dirección:</strong> Calle Dulce, 123</p>
-               <p><strong>Teléfono:</strong> (123) 456-7890</p>
+                <p><strong>Email:</strong> info@pasteleria-delicias.com</p>
+                <p><strong>Dirección:</strong> Calle Dulce, 123</p>
+                <p><strong>Teléfono:</strong> (123) 456-7890</p>
             </div>
-            
-            
-            
-            <p>Puedes encontrarnos en la Calle Dulce, 123. También puedes llamarnos al <strong>(123) 456-7890</strong> o escribirnos a <strong>info@pasteleria-delicias.com</strong>.</p>
         </section>
-    
-
-   </main>
+    </main>
 
     <footer>
         <p>&copy; 2024 Pastelería Delicias. Todos los derechos reservados.</p>
     </footer>
+
+    <script>
+       // Funcionalidad del carrito de compras
+       document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', function () {
+                const name = this.getAttribute('data-name');
+                const price = this.getAttribute('data-price');
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+                const itemIndex = cart.findIndex(item => item.name === name);
+
+                if (itemIndex !== -1) {
+                    cart[itemIndex].quantity += 1;
+                } else {
+                    cart.push({ name, price, quantity: 1 });
+                }
+
+                localStorage.setItem('cart', JSON.stringify(cart));
+                alert(`${name} añadido al carrito`);
+            });
+        });
+
+        // Verificar si el usuario está logueado
+        document.getElementById('video-btn').addEventListener('click', function() {
+            
+            const loggedIn = localStorage.getItem('user');
+            
+            if (loggedIn && loggedIn.length > 0 )  {
+                
+                // Si el usuario está logueado, redirigir a la página de videos.
+                window.location.href = 'recetas.html';
+            } else {
+                // Si no está logueado, mostrar el popup
+                document.getElementById('popup1').style.display = 'flex';
+                
+                
+            }
+        });
+ 
+        // Cerrar el popup
+       /* document.querySelector('.close').addEventListener('click', function() {
+            document.getElementById('popup1').style.display = 'none';
+        });*/
+        document.querySelector('.close').addEventListener('click', function() {
+            document.getElementById('popup1').classList.remove('flex');
+        });
+
+        // Controlar el estado del login
+         window.onload = function() {
+            const user = localStorage.getItem('user');
+
+            if (user) {
+                document.getElementById('logoutSection').style.display = 'block';
+                document.getElementById('registerLink').style.display = 'none';
+            } else {
+                document.getElementById('videoSection').style.display = 'none';
+            }
+        };
+
+        // Cerrar sesión
+        document.getElementById('logoutButton').addEventListener('click', function() {
+            localStorage.removeItem('user');
+            alert('Sesión cerrada');
+            location.reload();
+        });
+    </script>
 </body>
 </html>
