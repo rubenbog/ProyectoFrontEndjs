@@ -38,20 +38,7 @@
     <footer>
         <p>&copy; 2024 Pastelería Delicias. Todos los derechos reservados.</p>
     </footer>
-
-    <script>
-        function registerUser() {
-            const nombre = document.getElementById('nombre').value;
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-
-            // Guardar los datos en localStorage
-            const user = { nombre, email, password };
-            localStorage.setItem('user', JSON.stringify(user));
-
-            alert('Registro exitoso');
-            window.location.href = 'login.html';
-        }
-    </script>
+    <script src="register.js"></script>
+    
 </body>
 </html>

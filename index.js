@@ -1,5 +1,6 @@
- // Para agregar al carrito
-            document.querySelectorAll('.add-to-cart').forEach(button => {
+
+       // Funcionalidad del carrito de compras
+       document.querySelectorAll('.add-to-cart').forEach(button => {
             button.addEventListener('click', function () {
                 const name = this.getAttribute('data-name');
                 const price = this.getAttribute('data-price');
@@ -16,43 +17,48 @@
                 alert(`${name} añadido al carrito`);
             });
         });
-        //***********
-// Comprobar si el usuario está logeado
-            document.getElementById('video-btn').addEventListener('click', function() {
-            const loggedIn = localStorage.getItem('loggedIn');
 
-            if (loggedIn === 'true') {
-                // Si el usuario está logeado, redirigir a popup.html
+        // Verificar si el usuario está logueado
+        document.getElementById('video-btn').addEventListener('click', function() {
+            
+            const loggedIn = localStorage.getItem('user');
+            
+            if (loggedIn && loggedIn.length > 0 )  {
+                
+                // Si el usuario está logueado, redirigir a la página de videos.
                 window.location.href = 'recetas.html';
             } else {
-                // Si no está logeado, mostrar el popup
+                // Si no está logueado, mostrar el popup
                 document.getElementById('popup1').style.display = 'flex';
+                
+                
             }
         });
-
-        // Cerrar el popup cuando se haga clic en la "X"
+ 
+        // Cerrar el popup
+       /* document.querySelector('.close').addEventListener('click', function() {
+            document.getElementById('popup1').style.display = 'none';
+        });*/
         document.querySelector('.close').addEventListener('click', function() {
-        document.getElementById('popup1').style.display = 'none';
+            document.getElementById('popup1').classList.remove('flex');
         });
-        //************
-        // Verificar si el usuario está logueado
-            window.onload = function() {
+
+        // Controlar el estado del login
+         window.onload = function() {
             const user = localStorage.getItem('user');
 
             if (user) {
-                // Si el usuario está logueado
                 document.getElementById('logoutSection').style.display = 'block';
-                document.getElementById('registerLink').style.display = 'none'; // Oculta el botón de "Registrarse"
+                document.getElementById('registerLink').style.display = 'none';
             } else {
-                // Si el usuario no está logueado
-               // document.getElementById('recetasLink').style.display = 'none'; // Oculta el link de "Videos"
-                document.getElementById('videoSection').style.display = 'none'; // Oculta la sección de videos
+                document.getElementById('videoSection').style.display = 'none';
             }
         };
 
-        // Función para cerrar sesión
+        // Cerrar sesión
         document.getElementById('logoutButton').addEventListener('click', function() {
             localStorage.removeItem('user');
             alert('Sesión cerrada');
-            location.reload(); // Recargar la página para actualizar el estado
+            location.reload();
         });
+   
